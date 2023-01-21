@@ -36,37 +36,36 @@ function App() {
   };
 
   const favourite = (e) => {
-    console.log(e);
-    // console.log(e.target);
-    // console.log(e.target.textContent);
     setFavouriteState(true);
     if (e.target.value === "names") {
       if (e.target.textContent) {
-        const filterFavourite = names.filter((favouriteName) =>
-          favouriteName.name.includes(e.target.textContent)
-        );
+        const filterFavourite = resuableFilter(names, e.target.textContent);
         setFavouriteList(favouriteList.concat(filterFavourite));
 
-        const removeFavourite = names.filter(
-          (exclude) => !exclude.name.includes(e.target.textContent)
-        );
+        const removeFavourite = resuableNotFilter(names, e.target.textContent);
         setNames(removeFavourite);
       }
     } else if (e.target.value === "favourite") {
       if (e.target.textContent) {
-        const undoFavourite = favouriteList.filter(
-          (undoName) => !undoName.name.includes(e.target.textContent)
+        const undoFavourite = resuableNotFilter(
+          favouriteList,
+          e.target.textContent
         );
         setFavouriteList(undoFavourite);
 
-        const undoName = favouriteList.filter((nameReturn) =>
-          nameReturn.name.includes(e.target.textContent)
-        );
-        console.log(undoName);
+        const undoName = resuableFilter(favouriteList, e.target.textContent);
         setNames(names.concat(undoName));
       }
     }
   };
+
+  function resuableFilter(list, event) {
+    return list.filter((filterName) => filterName.name.includes(event));
+  }
+
+  function resuableNotFilter(list, event) {
+    return list.filter((filterName) => !filterName.name.includes(event));
+  }
 
   return (
     <div className="container">
