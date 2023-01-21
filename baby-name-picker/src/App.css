@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+}
+
+.list-of-names {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.female-box {
+  background-color: #ffc6e5;
+  color: #940050;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 2px;
+}
+
+.male-box {
+  background-color: #a0cfee;
+  color: #1a557d;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 2px;
+}
+
+.search-div {
+  width: 357px;
+  margin: 4px auto;
+  text-align: center;
+  display: inline-block;
+}
+
+.search-input {
+  width: 297px;
+  padding: 15px 0 15px 20px;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+  height: 52px;
+  margin-right: 0;
+  outline: none;
+  float: inherit;
+  box-sizing: border-box;
+}
