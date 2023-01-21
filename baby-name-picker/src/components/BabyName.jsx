@@ -14,6 +14,7 @@ export default function BabyNames(props) {
   return (
     <button
       className={babySex(props.sex)}
+      value={props.value}
       key={props.id}
       onClick={(e) => props.favourite(e)}
     >

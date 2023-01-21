@@ -36,24 +36,35 @@ function App() {
   };
 
   const favourite = (e) => {
-    // console.log(e);
+    console.log(e);
     // console.log(e.target);
     // console.log(e.target.textContent);
     setFavouriteState(true);
-    if (e.target.textContent) {
-      const filterFavourite = babyNamesJson.filter((favouriteName) =>
-        favouriteName.name.includes(e.target.textContent)
-      );
-      console.log([...favouriteList, filterFavourite]);
-      setFavouriteList([...favouriteList, filterFavourite]);
+    if (e.target.value === "names") {
+      if (e.target.textContent) {
+        const filterFavourite = names.filter((favouriteName) =>
+          favouriteName.name.includes(e.target.textContent)
+        );
+        setFavouriteList(favouriteList.concat(filterFavourite));
 
-      const removeFavourite = babyNamesJson.filter(
-        (exclude) => !exclude.name.includes(e.target.textContent)
-      );
+        const removeFavourite = names.filter(
+          (exclude) => !exclude.name.includes(e.target.textContent)
+        );
+        setNames(removeFavourite);
+      }
+    } else if (e.target.value === "favourite") {
+      if (e.target.textContent) {
+        const undoFavourite = favouriteList.filter(
+          (undoName) => !undoName.name.includes(e.target.textContent)
+        );
+        setFavouriteList(undoFavourite);
 
-      // console.log([...favouriteList], filterFavourite);
-      // console.log(removeFavourite);
-      setNames([...names, removeFavourite]);
+        const undoName = favouriteList.filter((nameReturn) =>
+          nameReturn.name.includes(e.target.textContent)
+        );
+        console.log(undoName);
+        setNames(names.concat(undoName));
+      }
     }
   };
 
@@ -64,11 +75,15 @@ function App() {
       {favouriteState ? (
         <div>
           <h3>Favourites:</h3>
-          <NameList favourite={favourite} names={favouriteList} />
+          <NameList
+            favourite={favourite}
+            names={favouriteList}
+            value="favourite"
+          />
         </div>
       ) : null}
       <br />
-      <NameList names={names} favourite={favourite} />
+      <NameList names={names} favourite={favourite} value="names" />
       <br />
     </div>
   );

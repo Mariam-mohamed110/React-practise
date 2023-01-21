@@ -22,6 +22,7 @@ export default function NameList(props) {
         name={name.name}
         sex={name.sex}
         favourite={props.favourite}
+        value={props.value}
       />
     );
   });
