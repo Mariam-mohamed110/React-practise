@@ -21,32 +21,32 @@ function App() {
     getData();
   }, []);
 
-  const data = Object.values(countries);
+  // const data = Object.values(countries);
   // console.log(data);
 
   const handleInput = (e) => {
     // console.log(e.target.value);
     if (e.target.value) {
-      const filterCountries = data.filter((input) =>
+      const filterCountries = countries.filter((input) =>
         input["name"]["common"]
           .toLowerCase()
           .startsWith(e.target.value.toLowerCase())
       );
       setCountries(filterCountries);
     } else {
-      setCountries(data);
+      setCountries(countries);
     }
   };
 
   const handleRegion = (e) => {
     console.log(e);
     if (e.target.value) {
-      const filterRegions = data.filter((input) =>
+      const filterRegions = countries.filter((input) =>
         input["region"].includes(e.target.value)
       );
       setCountries(filterRegions);
     } else {
-      setCountries(data);
+      setCountries(countries);
     }
   };
 
