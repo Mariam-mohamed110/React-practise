@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import LiveScore from "./components/LiveScore";
 import { useState, useEffect } from "react";
