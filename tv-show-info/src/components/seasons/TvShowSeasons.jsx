@@ -1,21 +1,22 @@
 import { React, useEffect, useState } from "react";
-import TvShowCard from "./TvShowCard";
 import { Box } from "@mui/material";
+import SeasonsCards from "./SeasonsCard";
 
-export default function TvShowsList() {
-  const [shows, setShow] = useState([]);
+export default function TvShowSeasons(props) {
+  const [show, setShow] = useState([]);
 
   useEffect(() => {
-    const getShows = async () => {
-      const res = await fetch("https://api.tvmaze.com/shows");
+    const getShow = async () => {
+      const res = await fetch(
+        `https://api.tvmaze.com/shows/${props.id}/seasons`
+      );
       const json = await res.json();
       setShow(json);
-      console.log(json);
-      console.log(json[0]["genres"]);
     };
-    getShows();
+    getShow();
   }, []);
 
+  console.log(props.id);
   return (
     <Box
       sx={{
@@ -28,9 +29,9 @@ export default function TvShowsList() {
         borderRadius: 1,
       }}
     >
-      {shows.map((show) => {
-        return <TvShowCard show={show} key={show["id"]} />;
-      })}
+      {show.map((season) => (
+        <SeasonsCards season={season} key={season["id"]} />
+      ))}
     </Box>
   );
 }

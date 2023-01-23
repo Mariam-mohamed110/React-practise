@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import {
   TextField,
   Box,
@@ -9,6 +9,10 @@ import {
 } from "@mui/material";
 
 export default function SearchBar({ handleInput, handleRegion, region }) {
+  const [value, setValue] = useState("");
+
+  const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
+
   return (
     <Box sx={{ display: "flex", flexDirection: "row" }}>
       <Box
@@ -34,15 +38,22 @@ export default function SearchBar({ handleInput, handleRegion, region }) {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value=""
+            value={value}
             label="Region"
-            onChange={handleRegion}
+            onChange={(e) => {
+              handleRegion(e);
+              setValue(e.target.value);
+            }}
           >
-            <MenuItem value="Africa">Africa</MenuItem>
+            {regions.map((region) => (
+              <MenuItem value={region}>{region}</MenuItem>
+            ))}
+
+            {/* <MenuItem value="Africa">Africa</MenuItem>
             <MenuItem value="Americas">Americas</MenuItem>
             <MenuItem value="Asia">Asia</MenuItem>
             <MenuItem value="Europe">Europe</MenuItem>
-            <MenuItem value="Oceania">Oceania</MenuItem>
+            <MenuItem value="Oceania">Oceania</MenuItem> */}
           </Select>
         </FormControl>
       </Box>

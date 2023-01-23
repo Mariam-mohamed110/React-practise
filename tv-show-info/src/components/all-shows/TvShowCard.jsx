@@ -8,14 +8,27 @@ import {
   Typography,
   Rating,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const regexExpression = /<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g;
 
 export default function TvShowCard(props) {
+  const navigate = useNavigate();
   return (
     <Box sx={{ m: 1 }}>
       <Card sx={{ width: 335, pb: 1 }}>
-        <CardActionArea component={website} to="/questions">
+        <CardActionArea
+          key={props.show["id"]}
+          onClick={() => {
+            props.changeId(props.show["id"]);
+            console.log(props.show.id);
+            navigate("/shows");
+            // <Navigate path="/shows" />;
+            // Navigate("/shows");
+          }}
+          //   element={<TvShowSeasons id={props.show.id} />}
+          //   to="/shows"
+        >
           <CardContent>
             <Typography
               gutterBottom
