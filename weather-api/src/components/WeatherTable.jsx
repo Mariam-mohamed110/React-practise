@@ -1,3 +1,4 @@
+import { React } from "react";
 import {
   LineChart,
   Line,
@@ -10,17 +11,12 @@ import {
 } from "recharts";
 import { Box } from "@mui/material";
 
-export default function lineGraph({ data }) {
-  // const data = {
-  //   name: country,
-  //   hour: hour,
-  //   temp: temperature,
-  // };
-
+export default function LineGraph({ hour }) {
+  console.log(hour);
   return (
     <Box alignItems="center" justifyContent="center">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart width={1000} height={400} data={data}>
+        <LineChart data={hour}>
           <CartesianGrid stroke="#ccc"></CartesianGrid>
           <XAxis dataKey="hour" />
           <YAxis />

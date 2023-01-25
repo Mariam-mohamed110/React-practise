@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-export default function InputLocation({ onSubmit, handleDate }) {
+export default function InputLocation({ onSubmit, handleDay }) {
   const [searched, setSearched] = useState("");
   const [value, setValue] = useState("");
 
@@ -58,7 +58,7 @@ export default function InputLocation({ onSubmit, handleDate }) {
             value={value}
             label="Date"
             onChange={(e) => {
-              handleDate(e);
+              handleDay(e);
               setValue(e.target.value);
             }}
           >
