@@ -8,9 +8,9 @@ import {
   Typography,
 } from "@mui/material";
 
-const regexExpression = /<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g;
-
 export default function SeasonsCards(props) {
+  const regexExpression = /<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g;
+  console.log(props.season);
   return (
     <Box sx={{ m: 1 }}>
       <Card sx={{ width: 335, pb: 1 }}>

@@ -16,7 +16,6 @@ export default function TvShowSeasons(props) {
     getShow();
   }, []);
 
-  console.log(props.id);
   return (
     <Box
       sx={{
